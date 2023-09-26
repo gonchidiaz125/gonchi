@@ -1,0 +1,22 @@
+body{
+    background-color: rgb(127, 209, 241);
+}
+
+.principal{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#informacion{
+    text-align: center;
+}
+
+a[href*=".edu"]{
+    background-color: orangered;
+} 
+
+h1:hover{
+    color: orangered;
+}
+.principal::first-line{
+    background-color: orangered;
+}
