@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<head>
+    <title>CuentaRegresiva</title>
+    <link rel="stylesheet" href="miEstilo.css">
+</head>
+    <body onload="cuentaRegresiva()">
+        
+        <div>
+        <h1>Tienes 30'' para responder <span id="empiezaCuentaRegresiva"></span></h1>
+        <br>
+        <p>¿Cuál jugador de River Plate tiene una estatua en "El Monumental"?</p>
+        <input type="text" id="repuesta1">
+        <br>
+        <p>¿Cuál jugador debutó con Racing de Avellaneda y luego ganó tres Copas de Europa con Real Madrid?</p>
+        <input type="text" id="repuesta2">
+        <br>
+        <p>¿Cuántos Mundiales de Fútbol ha ganado Argentina?</p>
+        <input type="text" id="repuesta3">
+        <br>
+        <p>¿Con cuál equipo de Buenos Aires Lionel Messi se probó, aunque no se concretara el fichaje?</p>
+        <input type="text" id="repuesta4">
+        <br>
+        <p>¿Con cuál apodo se conoce el sector más famoso de la hinchada de Boca Juniors?</p>
+        <input type="text" id="repuesta5">
+        <br>
+        <br>
+        
+            <button onclick="finalizado()">Termine</button>            
+            <br>
+            <br>
+            <button onclick="reiniciar()">Volver a intentarlo</button>
+        </div>
+
+
+    </body>
+    
+    <script>
+        let tiempoTerminado
+        let intervalodeTiempo
+
+        function cuentaRegresiva(){
+            tiempoTerminado = setTimeout(tiempoCumplido, 40000);
+            intervalodeTiempo = setInterval(ticTac, 1000);
+            
+            document.getElementById("empiezaCuentaRegresiva").textContent = 40;
+        }
+
+        function ticTac(){
+            let tiempo = document.getElementById("empiezaCuentaRegresiva").textContent;
+            document.getElementById("empiezaCuentaRegresiva").textContent = tiempo - 1;
+
+        }
+
+        function tiempoCumplido(){
+            clearInterval(intervalodeTiempo);
+            document.getElementById("empiezaCuentaRegresiva").textContent = 0;
+            alert("Se acabo el tiempo");
+        }
+
+        function finalizado(){
+            clearTimeout(tiempoTerminado);
+            clearInterval(intervalodeTiempo);
+
+            let fecha = new Date();
+            let repuesta1 = document.getElementById("repuesta1").value;
+            let repuesta2 = document.getElementById("repuesta2").value;
+            let repuesta3 = document.getElementById("repuesta3").value;
+            let repuesta4 = document.getElementById("repuesta4").value;
+            let repuesta5 = document.getElementById("repuesta5").value;
+
+            let mensaje = fecha.toLocaleDateString("es-Es") + "/n" +   
+                                "1. " + repuesta1 + "n/"+
+                                "2. " + repuesta2 + "n/"+
+                                "3. " + repuesta3 + "n/"+
+                                "4. " + repuesta4 + "n/"+
+                                "5. " + repuesta5 ;
+
+            alert(mensaje);                    
+        }
+
+        function reiniciar(){
+            location.reload();
+        }
+
+
+
+    </script>
+    
+    
+    
+</html>
